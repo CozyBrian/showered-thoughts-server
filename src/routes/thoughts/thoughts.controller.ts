@@ -1,8 +1,8 @@
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 const nanoid = require('nanoid');
 
 import { thought } from "../../@types";
-const pool = require('../../services/postgres');
+import pool from "../../services/postgres";
 
 export const getAllThoughts = (req: Request, res: Response) => {
   pool.query(`SELECT * FROM thoughts`, (err: any , result: any) => {
