@@ -55,7 +55,11 @@ export const postThought = (req: Request, res: Response) => {
     }
 
     return res.status(201).send({
-      status: 'SUCCESS'
+      status: 'SUCCESS',
+      result: {
+        ...thought,
+        id: id,
+      }
     });
   });
 
@@ -81,7 +85,11 @@ export const updateThought = (req: Request, res: Response) => {
     }
   
     return res.status(200).send({
-      status: 'SUCCESS'
+      status: 'SUCCESS',
+      result: {
+        ...thought,
+        id: id,
+      }
     });
   });
   
@@ -99,7 +107,10 @@ export const deleteThought = (req: Request, res: Response) => {
     }
   
     return res.status(200).send({
-      status: 'SUCCESS'
+      status: 'SUCCESS',
+      result: {
+        id
+      }
     });
   });
   
