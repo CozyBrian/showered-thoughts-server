@@ -6,7 +6,7 @@ const thoughtsRouter = express.Router();
 thoughtsRouter.get("/", getAllThoughts)
 thoughtsRouter.get("/:id", getThought)
 thoughtsRouter.post("/", postThought)
-thoughtsRouter.put("/", updateThought)
-thoughtsRouter.delete("/", deleteThought)
+thoughtsRouter.put("/:id", updateThought)
+thoughtsRouter.delete("/:id", deleteThought)
 
 export default thoughtsRouter;
