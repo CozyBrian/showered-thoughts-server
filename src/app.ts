@@ -1,7 +1,6 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import api from "./routes/api"
-const nanoid = require("nanoid");
 
 const app = express();
 
