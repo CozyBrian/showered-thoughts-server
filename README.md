@@ -1,48 +1,181 @@
-# showered-thoughts-server
-Backend for the showered thoughts web application.
+# Showered Thoughts Server
 
-<br>   
+## Get all thoughts
 
-## Getting Started
+Retrieve all thoughts from the database.
 
-Here are the routes
+**URL** : `/thoughts`
 
-<br>    
+**Method** : `GET`
 
-### Routes
+**Auth required** : No
 
+**Permissions required** : None
 
-GET https://showered-thoughts.onrender.com/v1/thoughts/
-> responds with an array of the thought objects. type of thought[].
+## Success Response
 
-<br> 
+**Code** : `200 OK`
 
-GET https://showered-thoughts.onrender.com/v1/thoughts/:id
-> responds with a thought object.
+**Content examples**
 
-<br/> 
-
-POST https://showered-thoughts.onrender.com/v1/thoughts/
-> this endpoint expects a JSON body with the author and content properties. responds with thought object with id.
-
-<br> 
-
-PUT https://showered-thoughts.onrender.com/v1/thoughts/:id
-> this endpoint expects a JSON body with the author and content properties. responds with updated thought object with id.
-
-<br> 
-
-DELETE https://showered-thoughts.onrender.com/v1/thoughts/:d
-> responds with the id of the deleted thought
-
-<br> 
-
-
-### Types
-```ts
-  type thought = {
-    id: string;
-    author: string;
-    content: string;
+```json
+[
+  {
+    "id": "1",
+    "author": "Jane Doe",
+    "content": "This is my first thought"
+  },
+  {
+    "id": "2",
+    "author": "John Doe",
+    "content": "This is my second thought"
   }
+]
+
 ```
+
+
+## Get thought
+
+Retrieve a single thought with the specified ID from the database.
+
+**URL** : `/thoughts/:id`
+
+**Method** : `GET`
+
+**Auth required** : No
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+  "id": "1",
+  "author": "Jane Doe",
+  "content": "This is my first thought"
+}
+```
+
+
+## Post thought
+
+Create a new thought using the data provided in the request body, generate a unique ID for the thought, and insert the thought into the database.
+
+**URL** : `/thoughts`
+
+**Method** : `POST`
+
+**Auth required** : No
+
+**Permissions required** : None
+
+**Data constraints**
+```json
+{
+  "author": "[string]",
+  "content": "[string]"
+}
+```
+**Data example**
+```json
+{
+  "author": "Jane Doe",
+  "content": "This is my new thought"
+}
+```
+
+## Success Response
+
+**Code** : `201 CREATED`
+
+**Content example**
+
+```json
+{
+  "status": "SUCCESS",
+  "result": {
+    "author": "Jane Doe",
+    "content": "This is my new thought",
+    "id": "3"
+  }
+}
+```
+
+
+## Update thought
+
+Update an existing thought with the specified ID using the data provided in the request body, and update the corresponding record in the database.
+
+**URL** : `/thoughts/:id`
+
+**Method** : `PUT`
+
+**Auth required** : No
+
+**Permissions required** : None
+
+**Data constraints**
+```json
+{
+  "author": "[string]",
+  "content": "[string]"
+}
+```
+
+**Data example**
+```json
+{
+  "author": "Jane Doe",
+  "content": "This is my updated thought"
+}
+```
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+  "status": "SUCCESS",
+  "result": {
+    "author": "Jane Doe",
+    "content": "This is my updated thought",
+    "id": "1"
+  }
+}
+```
+## Delete thought
+
+Delete the thought with the specified ID from the database.
+
+**URL** : `/thoughts/:id`
+
+**Method** : `DELETE`
+
+**Auth required** : No
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content example**
+
+```json
+{
+  "status": "SUCCESS",
+  "result": {
+    "id": "1"
+  }
+}
+```
+
+#### Generated with OpenAi's ChatGPT
